@@ -1,6 +1,7 @@
 #! /bin/bash
 
-brightFolder="/sys/class/backlight/intel_backlight/"
+cd "/usr/local/lib/brightnessctl"
+source configuration.sh
 if [ -z "$1" ]
 then
 	value=`cat $brightFolder"max_brightness"`
