@@ -1,8 +1,11 @@
 #! /bin/bash
-if ["$1" == ""];
+
+brightFolder="/sys/class/backlight/intel_backlight/"
+if [ -z "$1" ]
 then
-	value=3000
+	value=`cat $brightFolder"max_brightness"`
 else
 	value=$1
 fi
-echo $value | sudo tee /sys/class/backlight/intel_backlight/brightness
+echo "changing brightness to:"
+echo $value | sudo tee $brightFolder"brightness"
