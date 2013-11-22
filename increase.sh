@@ -3,4 +3,4 @@
 cd "/usr/local/lib/brightnessctl"
 source configuration.sh
 
-sudo brightness `expr $currentbrigth + 1`
+sudo brightness `expr $currentbrigth + $stepSize`
