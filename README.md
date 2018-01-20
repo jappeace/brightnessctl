@@ -8,7 +8,7 @@ Installation is mostly done by the small makescript I wrote.
 However setting this up for i3 and edditing the sudoers file
 needs to be done manually.
 
-    sudo make install
+    $ sudo make install
 
 ## Make sudo not ask for a password
 The script needs to be able to be run as root without sudo asking for a
