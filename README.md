@@ -1,45 +1,20 @@
-#brightnessctl
-This shell project is designed to allow change of the */sys/class/backlight/&#42;/brightness* without being root.
+# brightnessctl
+This shell project is designed to allow change of the
+*/sys/class/backlight/&#42;/brightness* without being root.
 This is usefull for keybinding.
 
-#installation
-for usage a couple of things need be done.
-you should be root to make things faster:
+# installation
+Installation is mostly done by the small makescript I wrote. 
+However setting this up for i3 and edditing the sudoers file
+needs to be done manually.
 
-	$sudo -i
+    sudo make install
 
-##Cloning
-I have the scripts located at /usr/local/lib/brightnessctl, there are refrences to this path in
-*increase.sh* and *decrease.sh* if you want to install it somwhere else change the refences.
+## Make sudo not ask for a password
+The script needs to be able to be run as root without sudo asking for a
+password (otherwise you can't keybind it).
 
-#Configuring
-You should configure the path where your path is in *configure.sh*.
-you propably also want to change the stepsize, since my screen allows about 5000 different brightnesses,
-whereas a regular screen usaly allows about 100
-
-##Permissions
-First of all *decrease.sh*, *increase.sh* and *writebrightness.sh* need to be marked as executable on group level.
-*increase.sh* and *decrease.sh* also need to be chowned to a group where the target user is also member off. The primary owner can remain root.
-
-	#cd /usr/local/lib/brightnessctl
-	#chmod 750 decrease.sh increase.sh writebrightness.sh
-	#chown root:video increase.sh decrease.sh
-
-##Global acces
-Global access to the scripts is achieved by symlinking them from a folder defined in *$PATH* I used */usr/local/bin* since this directory
-wass left empty by my packagemanager.
-
-	#ln -s /usr/local/lib/brightnessctl/writebrightness.sh /usr/local/bin/brihgtness
-	#ln -s /usr/local/lib/brightnessctl/increase.sh /usr/local/bin/brihgtness+
-	#ln -s /usr/local/lib/brightnessctl/decrease.sh /usr/local/bin/brihgtness-
-
-note that i rename them all
-
-##The bridge
-The key in this story is allowing the brightness command to be executed from a *sudo* without a passowrd
-so edit the sudoers file:
-
-	#visudo
+	$ sudo visudo
 
 and insert the following line
 
@@ -47,19 +22,17 @@ and insert the following line
 
 In my case the sudoers group is equal to wheel.
 
-##Testing
-Go back to userspace
-
-	#exit
-
-Now type in (be warned, a brightness of 0 makes my screen completly black)
+### Testing ###
+Now type in (be warned, a brightness of 0 made my screen completly black in the
+passed, use arrow up to get the 100 command again)
 
 	$brightness 100
 	$brightness 0
 
-and the brightness should change.
+The birghtness should have chagned.
+Now you can setup keybindings to this script for your favorite window manager!
 
-##Key binding (i3)
+## Key binding (i3)
 If you use i3 you could use the following lines in your config to fix keybinding:
 
 	bindsym $mod+F8 exec brightness-
