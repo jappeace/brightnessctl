@@ -1,5 +1,5 @@
 INSTALL_FOLDER=/usr/local/lib/brightnessctl
-BIN_FOLDER=/usr/local/bin # works on most distros, nix needs sthng else
+BIN_FOLDER=/usr/local/bin# works on most distros, nix needs sthng else
 install:
 	echo installing
 	mkdir -p $(INSTALL_FOLDER)
