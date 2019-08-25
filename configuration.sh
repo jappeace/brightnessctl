@@ -1,5 +1,6 @@
 #! /bin/bash
 
 brightFolder="/sys/class/backlight/intel_backlight/"
-stepSize=25
-currentbrigth=`cat $brightFolder"brightness"`
+currentBright=`cat $brightFolder"brightness"`
+maxBright=`cat $brightFolder"max_brightness"`
+stepSize=$((maxBright / 10))
