@@ -4,7 +4,7 @@ cd "/usr/local/lib/brightnessctl"
 source configuration.sh
 if [ -z "$1" ]
 then
-	value=`cat $brightFolder"max_brightness"`
+	value=$maxBright
 else
 	value=$1
 fi
