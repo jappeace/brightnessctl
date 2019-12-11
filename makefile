@@ -4,9 +4,9 @@ install:
 	echo installing
 	mkdir -p $(INSTALL_FOLDER)
 	cp -R ./*  $(INSTALL_FOLDER)/
-	ln -s $(INSTALL_FOLDER)/writebrightness.sh $(BIN_FOLDER)/brightness
-	ln -s $(INSTALL_FOLDER)/increase.sh $(BIN_FOLDER)/brightness+
-	ln -s $(INSTALL_FOLDER)/decrease.sh $(BIN_FOLDER)/brightness-
+	ln -fs $(INSTALL_FOLDER)/writebrightness.sh $(BIN_FOLDER)/brightness
+	ln -fs $(INSTALL_FOLDER)/increase.sh $(BIN_FOLDER)/brightness+
+	ln -fs $(INSTALL_FOLDER)/decrease.sh $(BIN_FOLDER)/brightness-
 	echo "don't forget to modify your sudoers file and i3 config"
 
 uninstall:
